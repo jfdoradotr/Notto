@@ -8,3 +8,7 @@
 This basically is a simple clone of the most common and popular notes app that you may already know.
 
 ## Demo
+### feature/notes-main-view-list
+| Screenshot 01 |
+| ------------- |
+| ![screenshot01](.screenshots/screenshot01.png) |
