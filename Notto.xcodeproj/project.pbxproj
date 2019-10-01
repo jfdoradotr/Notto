@@ -15,6 +15,7 @@
 		A97991982342B8AC007063F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97991962342B8AC007063F9 /* LaunchScreen.storyboard */; };
 		A97991A12342BDA9007063F9 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97991A02342BDA9007063F9 /* Note.swift */; };
 		A97991A42342BEAC007063F9 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97991A32342BEAB007063F9 /* NoteTableViewCell.swift */; };
+		A97991A72342EB4F007063F9 /* NewComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97991A62342EB4F007063F9 /* NewComposeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		A97991992342B8AC007063F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A97991A02342BDA9007063F9 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		A97991A32342BEAB007063F9 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
+		A97991A62342EB4F007063F9 /* NewComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewComposeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,11 +62,11 @@
 		A979918A2342B8A9007063F9 /* Notto */ = {
 			isa = PBXGroup;
 			children = (
+				A97991A52342EB33007063F9 /* Controllers */,
 				A97991A22342BE8B007063F9 /* Views */,
 				A979919F2342BDA1007063F9 /* Model */,
 				A979918B2342B8A9007063F9 /* AppDelegate.swift */,
 				A979918D2342B8A9007063F9 /* SceneDelegate.swift */,
-				A979918F2342B8A9007063F9 /* NotesListViewController.swift */,
 				A97991912342B8A9007063F9 /* Main.storyboard */,
 				A97991942342B8AC007063F9 /* Assets.xcassets */,
 				A97991962342B8AC007063F9 /* LaunchScreen.storyboard */,
@@ -87,6 +89,15 @@
 				A97991A32342BEAB007063F9 /* NoteTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A97991A52342EB33007063F9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A979918F2342B8A9007063F9 /* NotesListViewController.swift */,
+				A97991A62342EB4F007063F9 /* NewComposeViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +173,7 @@
 			files = (
 				A97991902342B8A9007063F9 /* NotesListViewController.swift in Sources */,
 				A979918C2342B8A9007063F9 /* AppDelegate.swift in Sources */,
+				A97991A72342EB4F007063F9 /* NewComposeViewController.swift in Sources */,
 				A979918E2342B8A9007063F9 /* SceneDelegate.swift in Sources */,
 				A97991A42342BEAC007063F9 /* NoteTableViewCell.swift in Sources */,
 				A97991A12342BDA9007063F9 /* Note.swift in Sources */,

@@ -12,3 +12,8 @@ This basically is a simple clone of the most common and popular notes app that y
 | Screenshot 01 |
 | ------------- |
 | ![screenshot01](.screenshots/screenshot01.png) |
+
+### feature/create-new-compose-view-controller
+| Screenshot 02 | Screenshot 03 |
+| ------------- |  ------------- |
+| ![screenshot02](.screenshots/screenshot02.png) | ![screenshot03](.screenshots/screenshot03.png) |
