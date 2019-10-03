@@ -17,3 +17,8 @@ This basically is a simple clone of the most common and popular notes app that y
 | Screenshot 02 | Screenshot 03 |
 | ------------- |  ------------- |
 | ![screenshot02](.screenshots/screenshot02.png) | ![screenshot03](.screenshots/screenshot03.png) |
+
+### feature/handle-keyboard-notification
+| Screenshot 04 |
+| ------------- |
+| ![screenshot04](.screenshots/screenshot04.png) |
