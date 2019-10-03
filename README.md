@@ -32,3 +32,8 @@ This basically is a simple clone of the most common and popular notes app that y
 | Screenshot 08 |
 | ------------- |
 | ![screenshot08](.screenshots/screenshot08.png) |
+
+### feature/date-formatting-on-cells
+| Screenshot 09 |
+| ------------- |
+| ![screenshot09](.screenshots/screenshot09.png) |

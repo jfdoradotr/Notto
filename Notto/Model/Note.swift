@@ -15,4 +15,13 @@ struct Note: Codable {
   var title: String
   var date = Date()
   var body: String
+
+  // MARK: - Methods
+
+  func getDate() -> String {
+    let format = DateFormatter()
+    format.timeStyle = .none
+    format.dateStyle = .short
+    return format.string(from: date)
+  }
 }

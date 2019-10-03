@@ -20,7 +20,7 @@ class NoteTableViewCell: UITableViewCell {
 
   func configureCell(_ note: Note) {
     titleLabel.text = note.title
-    dateLabel.text = "02/23/2019"
+    dateLabel.text = note.getDate()
     bodyLabel.text = note.body
   }
 }
