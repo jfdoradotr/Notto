@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Note {
+struct Note: Codable {
 
   // MARK: - Properties
 

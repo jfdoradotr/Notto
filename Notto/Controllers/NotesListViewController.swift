@@ -18,7 +18,7 @@ class NotesListViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    //testData()
+    loadData()
   }
 
   // MARK: - Navigation
@@ -32,11 +32,27 @@ class NotesListViewController: UITableViewController {
 
   // MARK: - Methods
 
-  func testData() {
-    for i in 0...10 {
-      let note = Note(title: "Note \(i)", body: "This is the body for the note \(1)")
-      notes.append(note)
+  func saveData() {
+    let jsonEncoder = JSONEncoder()
+    if let savedData = try? jsonEncoder.encode(notes) {
+      let defaults = UserDefaults.standard
+      defaults.set(savedData, forKey: "notes")
+    } else {
+      print("Failed to save notes.")
     }
+  }
+
+  func loadData() {
+    let defaults = UserDefaults.standard
+    if let savedNotes = defaults.object(forKey: "notes") as? Data {
+      let jsonDecoder = JSONDecoder()
+      do {
+        notes = try jsonDecoder.decode([Note].self, from: savedNotes)
+      } catch {
+        print("Failed to load notes")
+      }
+    }
+    tableView.reloadData()
   }
 }
 
@@ -67,6 +83,8 @@ extension NotesListViewController: NewComposeDelegate {
     notes.append(note)
     let newIndexPath = IndexPath(row: notes.count - 1, section: 0)
     tableView.insertRows(at: [newIndexPath], with: .automatic)
+
+    saveData()
   }
 }
 

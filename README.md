@@ -27,3 +27,8 @@ This basically is a simple clone of the most common and popular notes app that y
 | Screenshot 05 | Screenshot 06 | Screenshot 07 |
 | ------------- |  ------------ |  ------------ |
 | ![screenshot05](.screenshots/screenshot05.png) | ![screenshot06](.screenshots/screenshot06.png) | ![screenshot07](.screenshots/screenshot07.png) |
+
+### feature/persistance-data
+| Screenshot 08 |
+| ------------- |
+| ![screenshot08](.screenshots/screenshot08.png) |
