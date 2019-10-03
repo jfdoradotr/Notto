@@ -22,3 +22,8 @@ This basically is a simple clone of the most common and popular notes app that y
 | Screenshot 04 |
 | ------------- |
 | ![screenshot04](.screenshots/screenshot04.png) |
+
+### feature/create-communication-between-newcompose-and-mainvc
+| Screenshot 05 | Screenshot 06 | Screenshot 07 |
+| ------------- |  ------------ |  ------------ |
+| ![screenshot05](.screenshots/screenshot05.png) | ![screenshot06](.screenshots/screenshot06.png) | ![screenshot07](.screenshots/screenshot07.png) |

@@ -8,12 +8,20 @@
 
 import UIKit
 
+protocol NewComposeDelegate: class {
+  func newCompose(_ viewController: NewComposeViewController, didAddNewNote note: Note)
+}
+
 class NewComposeViewController: UIViewController {
 
   // MARK: - Outlets
 
   @IBOutlet var textView: UITextView!
   @IBOutlet var saveBarButtonItem: UIBarButtonItem!
+
+  // MARK: - Properties
+
+  weak var delegate: NewComposeDelegate?
 
   // MARK: - View lifecycle
 
@@ -24,6 +32,8 @@ class NewComposeViewController: UIViewController {
     let notificationCenter = NotificationCenter.default
     notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+
+    textView.becomeFirstResponder()
   }
 
   // MARK: - Actions
@@ -33,9 +43,11 @@ class NewComposeViewController: UIViewController {
     alert.addTextField()
     alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] (action) in
       if let title = alert.textFields?.first?.text, let body = self?.textView.text {
-        print("Title: \(title)")
-        print("Body: \(body)")
         let newNote = Note(title: title, body: body)
+        if let strongSelf = self {
+          strongSelf.delegate?.newCompose(strongSelf, didAddNewNote: newNote)
+        }
+        self?.textView.resignFirstResponder()
         self?.dismiss(animated: true)
       }
     }))

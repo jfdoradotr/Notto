@@ -18,7 +18,16 @@ class NotesListViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    testData()
+    //testData()
+  }
+
+  // MARK: - Navigation
+
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "NewComposeViewController",
+      let vc = segue.destination as? NewComposeViewController {
+      vc.delegate = self
+    }
   }
 
   // MARK: - Methods
@@ -47,6 +56,17 @@ extension NotesListViewController {
     cell.configureCell(notes[indexPath.row])
 
     return cell
+  }
+}
+
+// MARK: - NewCompose Delegate
+
+extension NotesListViewController: NewComposeDelegate {
+
+  func newCompose(_ viewController: NewComposeViewController, didAddNewNote note: Note) {
+    notes.append(note)
+    let newIndexPath = IndexPath(row: notes.count - 1, section: 0)
+    tableView.insertRows(at: [newIndexPath], with: .automatic)
   }
 }
 

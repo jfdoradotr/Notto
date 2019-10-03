@@ -69,7 +69,7 @@
                     <navigationItem key="navigationItem" title="Notes" id="xdK-em-Um3">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="J9H-X7-pGf">
                             <connections>
-                                <segue destination="Eyz-oj-fa4" kind="popoverPresentation" popoverAnchorBarButtonItem="J9H-X7-pGf" id="QwX-M2-J3l">
+                                <segue destination="Eyz-oj-fa4" kind="popoverPresentation" identifier="NewComposeViewController" popoverAnchorBarButtonItem="J9H-X7-pGf" id="QwX-M2-J3l">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
