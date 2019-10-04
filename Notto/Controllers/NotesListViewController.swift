@@ -32,6 +32,7 @@ class NotesListViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    navigationItem.leftBarButtonItem = editButtonItem
     loadData()
   }
 
@@ -94,6 +95,15 @@ extension NotesListViewController {
     tableView.deselectRow(at: indexPath, animated: true)
     let selectedNote = notes[indexPath.row]
     performSegue(withIdentifier: Storyboard.Identifier.editCompose, sender: selectedNote)
+  }
+
+  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      notes.remove(at: indexPath.row)
+      tableView.deleteRows(at: [indexPath], with: .left)
+
+      saveData()
+    }
   }
 }
 

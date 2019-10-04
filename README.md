@@ -42,3 +42,8 @@ This basically is a simple clone of the most common and popular notes app that y
 | Screenshot 10 | Screenshot 11 |
 | ------------- |  ------------- |
 | ![screenshot10](.screenshots/screenshot10.png) | ![screenshot11](.screenshots/screenshot11.png) |
+
+### feature/remove-notes
+| Screenshot 12 | Screenshot 13 | Screenshot 14 |
+| ------------- |  ------------ |  ------------ |
+| ![screenshot12](.screenshots/screenshot12.png) | ![screenshot06](.screenshots/screenshot13.png) | ![screenshot14](.screenshots/screenshot14.png) |
