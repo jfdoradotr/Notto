@@ -8,13 +8,22 @@
 
 import Foundation
 
-struct Note: Codable {
+class Note: Codable {
 
   // MARK: - Properties
 
+  private let id: String
   var title: String
-  var date = Date()
   var body: String
+  private(set) var date = Date()
+
+  // MARK: - Constructor
+
+  init(title: String, body: String) {
+    self.id = UUID().uuidString
+    self.title = title
+    self.body = body
+  }
 
   // MARK: - Methods
 
@@ -23,5 +32,16 @@ struct Note: Codable {
     format.timeStyle = .none
     format.dateStyle = .short
     return format.string(from: date)
+  }
+
+  func updateDate() {
+    date = Date()
+  }
+}
+
+extension Note: Equatable {
+
+  static func == (lhs: Note, rhs: Note) -> Bool {
+    return lhs.id == rhs.id
   }
 }

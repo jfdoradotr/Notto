@@ -14,6 +14,20 @@ class NotesListViewController: UITableViewController {
 
   var notes = [Note]()
 
+  struct Storyboard {
+
+    struct Identifier {
+      static let newCompose = "NewCompose"
+      static let editCompose = "EditCompose"
+    }
+
+    struct Cell {
+      struct Identifier {
+        static let noteCell = "NoteCell"
+      }
+    }
+  }
+
   // MARK: - View lifecycle
   
   override func viewDidLoad() {
@@ -24,9 +38,11 @@ class NotesListViewController: UITableViewController {
   // MARK: - Navigation
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "NewComposeViewController",
-      let vc = segue.destination as? NewComposeViewController {
+    if let vc = segue.destination as? ComposeViewController {
       vc.delegate = self
+      if segue.identifier == Storyboard.Identifier.editCompose, let noteToEdit = sender as? Note {
+        vc.noteToEdit = noteToEdit
+      }
     }
   }
 
@@ -65,7 +81,7 @@ extension NotesListViewController {
   }
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath) as? NoteTableViewCell else {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.Cell.Identifier.noteCell, for: indexPath) as? NoteTableViewCell else {
       fatalError("")
     }
 
@@ -73,16 +89,35 @@ extension NotesListViewController {
 
     return cell
   }
+
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+    let selectedNote = notes[indexPath.row]
+    performSegue(withIdentifier: Storyboard.Identifier.editCompose, sender: selectedNote)
+  }
 }
 
 // MARK: - NewCompose Delegate
 
-extension NotesListViewController: NewComposeDelegate {
+extension NotesListViewController: ComposeDelegate {
 
-  func newCompose(_ viewController: NewComposeViewController, didAddNewNote note: Note) {
-    notes.append(note)
-    let newIndexPath = IndexPath(row: notes.count - 1, section: 0)
+  func compose(_ viewController: ComposeViewController, didAdd note: Note) {
+    notes.insert(note, at: 0)
+    let newIndexPath = IndexPath(row: 0, section: 0)
     tableView.insertRows(at: [newIndexPath], with: .automatic)
+    saveData()
+  }
+
+  func compose(_ viewController: ComposeViewController, didUpdate note: Note) {
+    let index = notes.firstIndex(of: note) ?? 0
+
+    let currentIndexPath = IndexPath(row: index, section: 0)
+    let newIndexPath = IndexPath(row: 0, section: 0)
+    tableView.reloadRows(at: [currentIndexPath], with: .automatic)
+    tableView.moveRow(at: currentIndexPath, to: newIndexPath)
+
+    notes.remove(at: index)
+    notes.insert(note, at: 0)
 
     saveData()
   }

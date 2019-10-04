@@ -37,3 +37,8 @@ This basically is a simple clone of the most common and popular notes app that y
 | Screenshot 09 |
 | ------------- |
 | ![screenshot09](.screenshots/screenshot09.png) |
+
+### feature/edit-note
+| Screenshot 10 | Screenshot 11 |
+| ------------- |  ------------- |
+| ![screenshot10](.screenshots/screenshot10.png) | ![screenshot11](.screenshots/screenshot11.png) |

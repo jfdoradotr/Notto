@@ -69,21 +69,26 @@
                     <navigationItem key="navigationItem" title="Notes" id="xdK-em-Um3">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="J9H-X7-pGf">
                             <connections>
-                                <segue destination="Eyz-oj-fa4" kind="popoverPresentation" identifier="NewComposeViewController" popoverAnchorBarButtonItem="J9H-X7-pGf" id="QwX-M2-J3l">
+                                <segue destination="Eyz-oj-fa4" kind="popoverPresentation" identifier="NewCompose" popoverAnchorBarButtonItem="J9H-X7-pGf" id="QwX-M2-J3l">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Eyz-oj-fa4" kind="popoverPresentation" identifier="EditCompose" popoverAnchorBarButtonItem="J9H-X7-pGf" id="VVP-lO-fLb">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKm-F8-YSo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2063.1999999999998" y="138.98050974512745"/>
         </scene>
-        <!--New Compose View Controller-->
+        <!--Compose View Controller-->
         <scene sceneID="823-Nb-1hR">
             <objects>
-                <viewController id="Eyz-oj-fa4" customClass="NewComposeViewController" customModule="Notto" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Eyz-oj-fa4" customClass="ComposeViewController" customModule="Notto" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tuk-zf-VBN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -156,4 +161,7 @@
             <point key="canvasLocation" x="1124" y="138.98050974512745"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="QwX-M2-J3l"/>
+    </inferredMetricsTieBreakers>
 </document>

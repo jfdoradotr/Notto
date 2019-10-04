@@ -1,5 +1,5 @@
 //
-//  NewComposeViewController.swift
+//  ComposeViewController.swift
 //  Notto
 //
 //  Created by Juan Francisco Dorado Torres on 30/09/19.
@@ -8,11 +8,12 @@
 
 import UIKit
 
-protocol NewComposeDelegate: class {
-  func newCompose(_ viewController: NewComposeViewController, didAddNewNote note: Note)
+protocol ComposeDelegate: class {
+  func compose(_ viewController: ComposeViewController, didAdd note: Note)
+  func compose(_ viewController: ComposeViewController, didUpdate note: Note)
 }
 
-class NewComposeViewController: UIViewController {
+class ComposeViewController: UIViewController {
 
   // MARK: - Outlets
 
@@ -21,7 +22,8 @@ class NewComposeViewController: UIViewController {
 
   // MARK: - Properties
 
-  weak var delegate: NewComposeDelegate?
+  weak var delegate: ComposeDelegate?
+  var noteToEdit: Note?
 
   // MARK: - View lifecycle
 
@@ -33,6 +35,10 @@ class NewComposeViewController: UIViewController {
     notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
 
+    if let note = noteToEdit {
+      textView.text = note.body
+    }
+
     textView.becomeFirstResponder()
   }
 
@@ -40,13 +46,25 @@ class NewComposeViewController: UIViewController {
 
   @IBAction func saveBarButtonItemDidTap(_ sender: UIBarButtonItem) {
     let alert = UIAlertController(title: "Save your note", message: "Add a title to save your note", preferredStyle: .alert)
-    alert.addTextField()
+    alert.addTextField { [weak self] (textField) in
+      if let noteToEdit = self?.noteToEdit {
+        textField.text = noteToEdit.title
+      }
+    }
     alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak self] (action) in
       if let title = alert.textFields?.first?.text, let body = self?.textView.text {
-        let newNote = Note(title: title, body: body)
         if let strongSelf = self {
-          strongSelf.delegate?.newCompose(strongSelf, didAddNewNote: newNote)
+          if let noteToEdit = self?.noteToEdit {
+            noteToEdit.title = title
+            noteToEdit.body = body
+            noteToEdit.updateDate()
+            strongSelf.delegate?.compose(strongSelf, didUpdate: noteToEdit)
+          } else {
+            let newNote = Note(title: title, body: body)
+            strongSelf.delegate?.compose(strongSelf, didAdd: newNote)
+          }
         }
+
         self?.textView.resignFirstResponder()
         self?.dismiss(animated: true)
       }
@@ -81,7 +99,7 @@ class NewComposeViewController: UIViewController {
   }
 }
 
-extension NewComposeViewController: UITextViewDelegate {
+extension ComposeViewController: UITextViewDelegate {
 
   func textViewDidChange(_ textView: UITextView) {
     saveBarButtonItem.isEnabled = textView.text != ""
